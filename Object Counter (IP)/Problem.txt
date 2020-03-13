@@ -1,0 +1,4 @@
+A program that can find and count the number of
+objects (entities that are not connected) in an image.
+
+**Can be used to count the number of stars in an image**
