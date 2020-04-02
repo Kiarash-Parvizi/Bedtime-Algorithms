@@ -1,3 +1,4 @@
+#pragma once
 void Remove_ThePixel(int loc);
 
 
@@ -41,9 +42,9 @@ void Process_Core() {
 int tempLoc;
 void Remove_ThePixel(int loc) {
 	removePixel(loc);
-	tempLoc = loc + 4; if (tempLoc < img->len && getPixelAVG(tempLoc) > 30) Remove_ThePixel(tempLoc);
-	tempLoc = loc - 4; if (tempLoc > 0 && getPixelAVG(tempLoc) > 30) Remove_ThePixel(tempLoc);
-	tempLoc = loc + 4 * img->w; if (tempLoc < img->len && getPixelAVG(tempLoc) > 30) Remove_ThePixel(tempLoc);
+	tempLoc = loc + 4; if (tempLoc+2 < img->len && getPixelAVG(tempLoc) > 30) Remove_ThePixel(tempLoc);
+	tempLoc = loc - 4; if (tempLoc >= 0 && getPixelAVG(tempLoc) > 30) Remove_ThePixel(tempLoc);
+	tempLoc = loc + 4 * img->w; if (tempLoc+2 < img->len && getPixelAVG(tempLoc) > 30) Remove_ThePixel(tempLoc);
 	tempLoc = loc - 4 * img->w; if (tempLoc >= 0 && getPixelAVG(tempLoc) > 30) Remove_ThePixel(tempLoc);
 }
 
