@@ -1,3 +1,5 @@
+#Problem description:
+
 Bridge Crossing at Night A group of four people, who have one flashlight, need to
 cross a rickety bridge at night. A maximum of two people can cross the bridge at one
 time, and any party that crosses (either one or two people) must have the flashlight
