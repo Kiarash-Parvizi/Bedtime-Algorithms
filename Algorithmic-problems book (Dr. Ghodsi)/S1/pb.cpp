@@ -24,7 +24,6 @@ public:
 	void save_path(const int nodeId) {
 		auto path = tree.get_branch(nodeId);
 		string str(w*h, '.');
-		if (path.size()!=8) cout << "NNNNNNNNNNNNNNN";
 		for (const auto& v : path) {
 			str[v.x+v.y*w] = 'Q';
 		}
