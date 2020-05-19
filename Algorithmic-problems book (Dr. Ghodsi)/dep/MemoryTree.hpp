@@ -91,6 +91,21 @@ public:
 		return false;
 	}
 
+	int branchFind(const int leaf_id, const T val) const {
+		int idx = leaf_id;
+		int counter = 0;
+		while(idx >= 0) {
+			const auto& node = nodes[idx];
+			if (node.val == val) {
+				return counter;
+			}
+			//
+			idx = node.parent;
+			counter++;
+		}
+		return -1;
+	}
+
 	vector<T> get_branch(const int leaf_id) {
 		int idx = leaf_id;
 		vector<T> ret;
@@ -103,6 +118,23 @@ public:
 		}
 		return ret;
 	}
+
+	vector<T> get_branch_to(const int leaf_id, int final_val) {
+		int idx = leaf_id;
+		vector<T> ret;
+		while(idx >= 0) {
+			const auto& node = nodes[idx];
+			// save
+			ret.emplace_back(node.val);
+			//
+			if (node.val == final_val) {
+				break;
+			}
+			idx = node.parent;
+		}
+		return ret;
+	}
+	
 };
 
 
