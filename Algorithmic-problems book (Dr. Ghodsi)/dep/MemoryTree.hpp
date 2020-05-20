@@ -134,6 +134,21 @@ public:
 		}
 		return ret;
 	}
+
+	vector<T> get_branch(const int leaf_id, int depth) {
+		int idx = leaf_id;
+		int counter = 0;
+		vector<T> ret;
+		while(idx >= 0 && counter < depth) {
+			const auto& node = nodes[idx];
+			// save
+			ret.emplace_back(node.val);
+			//
+			idx = node.parent;
+			counter++;
+		}
+		return ret;
+	}
 	
 };
 

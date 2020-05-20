@@ -1,4 +1,4 @@
-// Problem 0xe
+// Problem 0xf
 #include"../dep/MemoryTree.hpp"
 #include"../dep/string_tools.hpp"
 #include"../dep/mini_structs.hpp"
@@ -36,9 +36,9 @@ public:
 			vec.pop_back();
 			auto& node = nodes[top.second];
 			for (const auto c: node.childs) {
-				auto loop_len = tree.branchFind(top.first, c+1);
-				if (loop_len != -1) {
-					if (loop_len != 1) {
+				auto loop_len = tree.branchFind(top.first, c+1)+1;
+				if (loop_len) {
+					if (loop_len != 2) {
 						//cout << "::" << loop_len << '\n';
 						if (loop_len < min_loop) {
 							min_loop = loop_len;
@@ -52,7 +52,7 @@ public:
 			}
 		}
 		auto branch = tree.get_branch_to(branch_id, fin_id);
-		return {min_loop+1, branch};
+		return {min_loop, branch};
 	}
 };
 
