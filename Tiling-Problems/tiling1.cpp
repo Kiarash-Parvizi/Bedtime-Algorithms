@@ -6,9 +6,9 @@ using namespace std;
 class Solver {
 const ll M = 1e9+7;
 public:
-	Solver() {
-		calc_f(1e3);
-		calc_g(1e3);
+	Solver(ll max) {
+		calc_f(max);
+		calc_g(max);
 	}
 	ll solve_for(int n) {
 		return G(n);
@@ -32,7 +32,7 @@ private:
 			ll res = 0;
 			for (int k = 0; k <= i; k++) {
 				ll f_r = f[i-k];
-				res += ( ((f_r*f_r)%M) * (k-1 < 0 ? 1 : g[k-1]) ) % M;
+				res = (res + ((f_r*f_r)%M) * (k-1 < 0 ? 1 : g[k-1]) ) % M;
 			}
 			return res;
 		};
@@ -47,7 +47,7 @@ private:
 };
 
 int main() {
-	Solver solver;
+	Solver solver(1e3);
 	//
 	for (int i = 1; i <= 30; i++)
 	cout << "g(" << i << ") = " << solver.solve_for(i) << '\n';
