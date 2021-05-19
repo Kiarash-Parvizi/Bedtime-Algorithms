@@ -56,7 +56,7 @@ def check(s):
             stack.push('op')
         elif ((ord(c) >= ord('a') and ord(c) <= ord('z')) or
                 (ord(c) >= ord('A') and ord(c) <= ord('Z')) or
-                (ord(c) >= ord('1') and ord(c) <= ord('9'))):
+                (ord(c) >= ord('0') and ord(c) <= ord('9'))):
             if top == 'op' or top == 'w':
                 stack.pop()
             stack.push('w')
@@ -76,7 +76,8 @@ def check(s):
             if stack.top() != 'w' or stack.size() > 2: return False
             stack.push(c)
         else: return False
-    return True
+    print(stack)
+    return stack.size() == 1 or (stack.size() == 2 and stack.top() == 'w')
 
 s = "2x+(21)x^2+x^5 = 2 < 5x = 2x^2 > 1"
 print(s, ':', check(s))
@@ -95,4 +96,6 @@ print(s, ':', check(s))
 s = "[(a)*[c]]^((ab+1)/(2c(a)))"
 print(s, ':', check(s))
 
-
+while True:
+    eq = input('math sentence: ')
+    print(check(eq))
